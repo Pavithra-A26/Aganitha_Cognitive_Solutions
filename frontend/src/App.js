@@ -97,42 +97,28 @@ function App() {
     </div> */}
 
 
-    <div style={{ textAlign: "center", padding: "20px",background: "linear-gradient(135deg, #89cff0, #ffb6c1)", height: "100vh"}}>
+    <div className="app-container">
       <h1>📚 Book Finder</h1>
 
-      <form onSubmit={handleSearch} style={{ marginBottom: "20px" }}>
+      <form onSubmit={handleSearch} className="search-form">
         <input
           type="text"
           placeholder="Search book by title..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          style={{ padding: "8px", width: "250px", marginRight: "10px" ,background: "#fff"}}
+          className="search-input"
         />
-        <button type="submit" style={{ padding: "8px 15px",background: "#fff" }}>Search</button>
+        <button type="submit" className="search-button">
+          Search
+        </button>
       </form>
 
-      <div style={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        gap: "20px"
-        
-      }}>
+      <div className="book-list">
         {books.length > 0 ? (
           books.map((book, index) => (
-            <div key={index} style={{
-              border: "1px solid #ddd",
-              padding: "15px",
-              width: "200px",
-              borderRadius: "10px",background: "#fff",
-              backgroundColor : "#fff"
-            }}>
-              <img
-                src={book.cover}
-                alt={book.title}
-                style={{ width: "100%", height: "250px", objectFit: "cover" ,background: "#fff"}}
-              />
-              <h3>{book.title} </h3>
+            <div key={index} className="book-card">
+              <img src={book.cover} alt={book.title} className="book-cover" />
+              <h3>{book.title}</h3>
               <p>by {book.author}</p>
               <p>({book.year || "N/A"})</p>
             </div>
